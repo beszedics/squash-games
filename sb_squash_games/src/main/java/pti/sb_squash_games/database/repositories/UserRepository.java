@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import pti.sb_squash_games.database.entities.User;
 
-public interface IUserRepository extends CrudRepository<User, Integer> {
+public interface UserRepository extends CrudRepository<User, Integer> {
 
 }
