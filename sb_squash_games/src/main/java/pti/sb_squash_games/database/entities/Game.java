@@ -30,11 +30,11 @@ public class Game {
 	private User secondUser;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Column(name = "result")
+	@JoinColumn(name = "result")
 	private Result result;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Column(name = "location")
+	@JoinColumn(name = "location")
 	private Location location;
 	
 	@Column(name = "date")
