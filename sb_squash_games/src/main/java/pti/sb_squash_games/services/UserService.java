@@ -1,6 +1,7 @@
 package pti.sb_squash_games.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,22 +15,50 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	public boolean isUserExits(String username, String password) throws NullPointerException {
+	public User getUserIfExits(String username, String password) throws NullPointerException {
 		
-		boolean isExists = false;
+		User user = null;
 		
-		List<User> user = userRepository.findByNameAndPassword(username, password);
+		List<User> actualUser = userRepository.findByNameAndPassword(username, password);
 		
-		if (user != null) {
+		if (actualUser != null) {
 			
-			if (!user.isEmpty()) {
-				isExists = true;
+			if (!actualUser.isEmpty()) {
+				
+				user = actualUser.get(0);
+				
 			}
 			
 		} else {
 			throw new NullPointerException();
 		}
 		
-		return isExists;
+		return user;
+	}
+	
+	public boolean isAdmin(User user) {
+		
+		boolean isAdmin = false;
+		
+		if (user != null) {
+			Integer userId = user.getId();
+			
+			Optional<User> actualUser = userRepository.findById(userId);
+			
+			if (actualUser.isPresent()) {
+				
+				if (actualUser.get().getIsAdmin()) {
+					isAdmin = true;
+				}
+				
+			} else {
+				throw new NullPointerException();
+			}
+			
+		} else {
+			throw new NullPointerException();
+		}
+		
+		return isAdmin;
 	}
 }

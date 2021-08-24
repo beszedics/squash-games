@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import pti.sb_squash_games.database.entities.User;
 import pti.sb_squash_games.services.UserService;
 
 @Controller
@@ -29,7 +30,9 @@ public class UserController {
 		
 		String page = "login";
 		
-		if (userService.isUserExits(username, password)) {
+		User user = userService.getUserIfExits(username, password);
+		
+		if (user != null) {
 			page = "index";
 		}
 		
