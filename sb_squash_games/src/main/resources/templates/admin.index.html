@@ -3,8 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin index</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 <body>
-	<p>Hello, admin!</p>
+	
+	<div class="container">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-12 col-md-6">
+			
+				<p>Add user</p>
+				<form action="/admin/addUser" method="POST">
+					<div class="mb-3">
+						<label for="username" class="form-label">Username</label> 
+						<input type="text" class="form-control" name="username" id="username">
+					</div>
+					<div class="mb-3">
+						<label for="password" class="form-label">Password</label>
+						<input type="password" class="form-control" name="password" id="password">
+					</div>
+					<div class="mb-3 form-check">
+					 	<input type="checkbox" class="form-check-input" name="isAdmin" id="isAdmin">
+					 	<label class="form-check-label" for="isAdmin">Admin</label>
+					</div>
+					<button type="submit" class="btn btn-primary">Add</button>
+				</form>	
+				
+			</div>
+		</div>
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js">
+	</script>
 </body>
 </html>

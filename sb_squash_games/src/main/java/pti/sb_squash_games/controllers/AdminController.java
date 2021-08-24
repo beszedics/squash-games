@@ -43,4 +43,22 @@ public class AdminController {
 		
 		return page;	
 	}
+	
+	@PostMapping(value = "/addUser")
+	public String addUser(
+			@RequestParam String username,
+			@RequestParam String password,
+			@RequestParam Boolean isAdmin
+	) {
+		
+		User user = new User();
+		user.setName(username);
+		user.setPassword(password);
+		user.setIsAdmin(isAdmin);
+		user.setIsPasswordChanged(false);
+		
+		userService.addUser(user);
+	
+		return "admin.index";
+	}
 }

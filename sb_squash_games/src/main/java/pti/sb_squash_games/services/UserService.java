@@ -61,4 +61,14 @@ public class UserService {
 		
 		return isAdmin;
 	}
+	
+	public void addUser(User user) {
+		
+		try {
+			userRepository.save(user);
+			
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		}
+	}
 }
