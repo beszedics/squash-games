@@ -27,7 +27,7 @@
 					 	<input type="checkbox" class="form-check-input" name="isAdmin" id="isAdmin">
 					 	<label class="form-check-label" for="isAdmin">Admin</label>
 					</div>
-					<button type="submit" class="btn btn-primary">Add</button>
+					<button type="submit" class="btn btn-primary">Add user</button>
 				</form>	
 				
 			</div>
@@ -50,7 +50,57 @@
 						<label for="hourlyRate" class="form-label">Hourly rate</label>
 						<input type="number" class="form-control" name="hourlyRate" id="hourlyRate" placeholder="1500 Ft">
 					</div>
-					<button type="submit" class="btn btn-primary">Add</button>
+					<button type="submit" class="btn btn-primary">Add location</button>
+				</form>	
+				
+			</div>
+		</div>
+		
+		<div class="row justify-content-center align-items-center">
+			<div class="col-12 col-md-6">
+			
+				<p>Add game</p>
+				<form action="/admin/addGame" method="POST">
+					<div class="form-row align-items-center">
+					    <div class="col-auto my-1">
+					    	<label class="mr-sm-2" for="firstUser">Select first user</label>
+						    	<select class="custom-select mr-sm-2" name="firstUser" id="firstUser">
+						        	<option selected>Choose...</option>
+						        	<option value="1">One</option>
+						        	<option value="2">Two</option>
+						        	<option value="3">Three</option>
+						      </select>
+					    </div>
+					    <div class="col-auto my-1">
+					    	<label class="mr-sm-2" for="secondUser">Select second user</label>
+						    	<select class="custom-select mr-sm-2" name="secondUser" id="secondUser">
+						        	<option selected>Choose...</option>
+						        	<option value="1">One</option>
+						        	<option value="2">Two</option>
+						        	<option value="3">Three</option>
+						      </select>
+					    </div>
+					    <div class="col-auto form-row">
+					    	<div class="col">
+					    		<label for="firstUserScore" class="form-label">First user score</label> 
+						    	<input type="number" class="form-control" name="firstUserScore" id="firstUserScore" placeholder="First user score">
+						    </div>
+						    <div class="col">
+						    	<label for="secondUserScore" class="form-label">Second user score</label> 
+						    	<input type="number" class="form-control" name="secondUserScore" id="secondUserScore" placeholder="Second user score">
+						    </div>
+					  </div>
+					  <div class="col-auto my-1">
+					    	<label class="mr-sm-2" for="winner">Winner user</label>
+						    	<select class="custom-select mr-sm-2" name="winner" id="winner">
+						        	<option selected>Choose...</option>
+						        	<option value="1">One</option>
+						        	<option value="2">Two</option>
+						        	<option value="3">Three</option>
+					      		</select>
+					    </div>
+					</div>
+					<button type="submit" class="btn btn-primary">Add game</button>
 				</form>	
 				
 			</div>

@@ -33,7 +33,10 @@ public class UserController {
 		User user = userService.getUserIfExits(username, password);
 		
 		if (user != null) {
-			page = "index";
+			
+			if (!user.getIsAdmin()) {
+				page = "index";
+			}
 		}
 		
 		return page;
