@@ -35,10 +35,33 @@ public class UserController {
 		if (user != null) {
 			
 			if (!user.getIsAdmin()) {
-				page = "index";
+				
+				if (!user.getIsPasswordChanged()) {
+					
+					page = "user.updatepassword";
+				
+				} else {
+					page = "index";
+				}
 			}
 		}
 		
 		return page;
+	}
+	
+	@PostMapping(value = "/updatePassword")
+	public String updatePassword(
+			@RequestParam String username,
+			@RequestParam String password
+	) {
+		
+		User user = userService.getUserByName(username);
+		
+		user.setPassword(password);
+		user.setIsPasswordChanged(true);
+		
+		userService.addUser(user);
+		
+		return "index";
 	}
 }

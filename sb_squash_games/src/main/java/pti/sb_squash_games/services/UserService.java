@@ -37,6 +37,23 @@ public class UserService {
 		return user;
 	}
 	
+	public User getUserByName(String username) throws NullPointerException {
+		
+		User user = null;
+		
+		List<User> actualUser = userRepository.findByName(username);
+		
+		if (actualUser != null) {
+			
+			user = actualUser.get(0);
+			
+		} else {
+			throw new NullPointerException();
+		}
+		
+		return user;
+	}
+	
 	public boolean isAdmin(User user) {
 		
 		boolean isAdmin = false;
@@ -71,5 +88,25 @@ public class UserService {
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean isUserChangedPassword(User user) {
+		
+		Boolean isUserChangedPassword = false;
+		Integer userId = user.getId();
+		
+		try {
+			Optional<User> actualUser = userRepository.findById(userId);
+			
+			if (actualUser.isPresent()) {
+				if (actualUser.get().getIsPasswordChanged()) {
+					isUserChangedPassword = true;
+				}
+			}
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		}
+		
+		return isUserChangedPassword;	
 	}
 }

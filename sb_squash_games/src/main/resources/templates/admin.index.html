@@ -17,11 +17,11 @@
 				<form action="/admin/addUser" method="POST">
 					<div class="mb-3">
 						<label for="username" class="form-label">Username</label> 
-						<input type="text" class="form-control" name="username" id="username">
+						<input type="text" class="form-control" name="username" id="username" placeholder="testusername">
 					</div>
 					<div class="mb-3">
 						<label for="password" class="form-label">Password</label>
-						<input type="password" class="form-control" name="password" id="password">
+						<input type="password" class="form-control" name="password" id="password" placeholder="************">
 					</div>
 					<div class="mb-3 form-check">
 					 	<input type="checkbox" class="form-check-input" name="isAdmin" id="isAdmin">
@@ -62,8 +62,8 @@
 				<p>Add game</p>
 				<form action="/admin/addGame" method="POST">
 					<div class="form-row align-items-center">
-					    <div class="col-auto my-1">
-					    	<label class="mr-sm-2" for="firstUser">Select first user</label>
+				    	<div class="col-auto my-1">
+					    	<label class="mr-sm-2" for="firstUser">First user</label>
 						    	<select class="custom-select mr-sm-2" name="firstUser" id="firstUser">
 						        	<option selected>Choose...</option>
 						        	<option value="1">One</option>
@@ -72,7 +72,7 @@
 						      </select>
 					    </div>
 					    <div class="col-auto my-1">
-					    	<label class="mr-sm-2" for="secondUser">Select second user</label>
+					    	<label class="mr-sm-2" for="secondUser">Second user</label>
 						    	<select class="custom-select mr-sm-2" name="secondUser" id="secondUser">
 						        	<option selected>Choose...</option>
 						        	<option value="1">One</option>
@@ -89,17 +89,32 @@
 						    	<label for="secondUserScore" class="form-label">Second user score</label> 
 						    	<input type="number" class="form-control" name="secondUserScore" id="secondUserScore" placeholder="Second user score">
 						    </div>
-					  </div>
-					  <div class="col-auto my-1">
+					  	</div>
+					  	<div class="col-auto my-1">
 					    	<label class="mr-sm-2" for="winner">Winner user</label>
-						    	<select class="custom-select mr-sm-2" name="winner" id="winner">
-						        	<option selected>Choose...</option>
-						        	<option value="1">One</option>
-						        	<option value="2">Two</option>
-						        	<option value="3">Three</option>
-					      		</select>
-					    </div>
+					    	<select class="custom-select mr-sm-2" name="winner" id="winner">
+					        	<option selected>Choose...</option>
+					        	<option value="1">One</option>
+					        	<option value="2">Two</option>
+					        	<option value="3">Three</option>
+				      		</select>
+			    		</div>
+		    			<div class="col-auto my-1">
+					    	<label class="mr-sm-2" for="location">Location</label>
+					    	<select class="custom-select mr-sm-2" name="location" id="location">
+					        	<option selected>Choose...</option>
+					        	<option value="1">One</option>
+					        	<option value="2">Two</option>
+					        	<option value="3">Three</option>
+				      		</select>
+			    		</div>
 					</div>
+					<div class="col-auto form-row">
+				    	<div class="col">
+				    		<label for="date" class="form-label">Date</label> 
+					    	<input type="date" class="form-control" name="date" id="date" placeholder="2021.08.25.">
+					    </div>
+				  	</div>
 					<button type="submit" class="btn btn-primary">Add game</button>
 				</form>	
 				

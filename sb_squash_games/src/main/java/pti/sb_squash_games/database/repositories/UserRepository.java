@@ -11,5 +11,6 @@ import pti.sb_squash_games.database.entities.User;
 public interface UserRepository extends CrudRepository<User, Integer> {
 	
 	List<User> findByNameAndPassword(String username, String password);
+	List<User> findByName(String username);
 	
 }
