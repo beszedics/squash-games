@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import pti.sb_squash_games.database.entities.Location;
 import pti.sb_squash_games.database.entities.User;
+import pti.sb_squash_games.services.LocationService;
 import pti.sb_squash_games.services.UserService;
 
 @Controller
@@ -16,6 +18,9 @@ public class AdminController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private LocationService locationService;
 	
 	@GetMapping(value = "/login")
 	public String login() {
@@ -59,6 +64,23 @@ public class AdminController {
 		
 		userService.addUser(user);
 	
+		return "admin.index";
+	}
+	
+	@PostMapping(value = "/addLocation")
+	public String addLocation(
+			@RequestParam String locationName,
+			@RequestParam String locationAddress,
+			@RequestParam Integer hourlyRate
+	) {
+		
+		Location location = new Location();
+		location.setName(locationName);
+		location.setAddress(locationAddress);
+		location.setHourlyRate(hourlyRate);
+		
+		locationService.addLocation(location);
+		
 		return "admin.index";
 	}
 }
