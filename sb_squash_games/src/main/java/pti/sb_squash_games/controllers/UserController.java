@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import pti.sb_squash_games.database.entities.Game;
+import pti.sb_squash_games.database.entities.Location;
 import pti.sb_squash_games.database.entities.User;
 import pti.sb_squash_games.services.GameService;
+import pti.sb_squash_games.services.LocationService;
 import pti.sb_squash_games.services.UserService;
 
 @Controller
@@ -24,6 +26,9 @@ public class UserController {
 	
 	@Autowired
 	private GameService gameService; 
+	
+	@Autowired
+	private LocationService locationService;
 	
 	@GetMapping(value = "/login")
 	public String login() {
@@ -79,6 +84,16 @@ public class UserController {
 		List<Game> games = gameService.getAllGames();
 		
 		model.addAttribute("games", games);
+		
+		return "index";
+	}
+	
+	@GetMapping(value = "/locations")
+	public String getAllLocations(Model model) {
+		
+		List<Location> locations = locationService.getAllLocations();
+		
+		model.addAttribute("locations", locations);
 		
 		return "index";
 	}
