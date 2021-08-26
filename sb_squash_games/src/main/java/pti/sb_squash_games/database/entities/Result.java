@@ -19,8 +19,16 @@ public class Result {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "first_user")
+	private User firstUser;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "second_user")
+	private User secondUser;
+	
 	@Column(name = "first_user_score")
-	private Integer firsUserScore;
+	private Integer firstUserScore;
 	
 	@Column(name = "second_user_score")
 	private Integer secondUserScore;
@@ -28,7 +36,6 @@ public class Result {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "winner")
 	private User winner;
-	
 
 	public Integer getId() {
 		return id;
@@ -38,12 +45,28 @@ public class Result {
 		this.id = id;
 	}
 
-	public Integer getFirsUserScore() {
-		return firsUserScore;
+	public User getFirstUser() {
+		return firstUser;
 	}
 
-	public void setFirsUserScore(Integer firsUserScore) {
-		this.firsUserScore = firsUserScore;
+	public void setFirstUser(User firstUser) {
+		this.firstUser = firstUser;
+	}
+
+	public User getSecondUser() {
+		return secondUser;
+	}
+
+	public void setSecondUser(User secondUser) {
+		this.secondUser = secondUser;
+	}
+
+	public Integer getFirstUserScore() {
+		return firstUserScore;
+	}
+
+	public void setFirsUserScore(Integer firstUserScore) {
+		this.firstUserScore = firstUserScore;
 	}
 
 	public Integer getSecondUserScore() {
@@ -64,7 +87,7 @@ public class Result {
 
 	@Override
 	public String toString() {
-		return "Result [id=" + id + ", firsUserScore=" + firsUserScore + ", secondUserScore=" + secondUserScore
+		return "Result [id=" + id + ", firstUserScore=" + firstUserScore + ", secondUserScore=" + secondUserScore
 				+ ", winner=" + winner + "]";
 	}	
 }

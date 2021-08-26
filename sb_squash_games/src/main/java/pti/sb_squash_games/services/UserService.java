@@ -1,13 +1,16 @@
 package pti.sb_squash_games.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import pti.sb_squash_games.database.entities.Game;
 import pti.sb_squash_games.database.entities.Location;
 import pti.sb_squash_games.database.entities.User;
+import pti.sb_squash_games.database.repositories.GameRepository;
 import pti.sb_squash_games.database.repositories.UserRepository;
 
 @Service
@@ -15,6 +18,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private GameRepository gameRepository;
 	
 	public User getUserIfExits(String username, String password) throws NullPointerException {
 		

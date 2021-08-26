@@ -2,9 +2,46 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Index</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 <body>
-	<p>Hello</p>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+				      		<th scope="col">First player name</th>
+				      		<th scope="col">Second player name</th>
+				      		<th scope="col">First player score</th>
+				      		<th scope="col">Second player score</th>
+				      		<th scope="col">Winner</th>
+				      		<th scope="col">Location</th>
+				      		<th scope="col">Date</th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr th:each="game : ${games}">
+			    			<td th:text="${game.result.firstUser.name}"></td>
+			    			<td th:text="${game.result.secondUser.name}"></td>
+			    			<td th:text="${game.result.firstUserScore}"></td>
+			    			<td th:text="${game.result.secondUserScore}"></td>
+			    			<td th:text="${game.result.winner.name}"></td>
+			    			<td th:text="${game.location.name}"></td>
+			    			<td th:text="${game.date}"></td>
+				    	</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js">
+	</script>
 </body>
 </html>

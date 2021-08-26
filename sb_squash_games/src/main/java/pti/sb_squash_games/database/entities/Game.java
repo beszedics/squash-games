@@ -22,14 +22,6 @@ public class Game {
 	private Integer id;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "first_user")
-	private User firstUser;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "second_user")
-	private User secondUser;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "result")
 	private Result result;
 	
@@ -46,22 +38,6 @@ public class Game {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public User getFirstUser() {
-		return firstUser;
-	}
-
-	public void setFirstUser(User firstUser) {
-		this.firstUser = firstUser;
-	}
-
-	public User getSecondUser() {
-		return secondUser;
-	}
-
-	public void setSecondUser(User secondUser) {
-		this.secondUser = secondUser;
 	}
 
 	public Result getResult() {
@@ -90,7 +66,6 @@ public class Game {
 
 	@Override
 	public String toString() {
-		return "Game [id=" + id + ", firstUser=" + firstUser + ", secondUser=" + secondUser + ", result=" + result
-				+ ", location=" + location + ", date=" + date + "]";
+		return "Game [id=" + id + ", result=" + result + ", location=" + location + ", date=" + date + "]";
 	}
 }
