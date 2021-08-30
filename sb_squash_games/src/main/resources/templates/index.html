@@ -5,16 +5,53 @@
 <title>Index</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
-	rel="stylesheet"
->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
-	rel="stylesheet"
->
-</head>
+	rel="stylesheet">
 <body>
 	
 	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<form action="/user/filteredName" method="POST">
+				
+					<div class="form-group">
+					    <label for="playerName">Player name</label>
+					    <input type="text" class="form-control" name="filterName" id="filterName" placeholder="testPlayer">
+					    <button type="submit" class="btn btn-primary">Search</button>
+				  	</div>
+				  	
+				</form>			
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<form action="/user/filteredLocation" method="POST">
+				
+					<div class="form-group">
+					    <label for="playerName">Location name</label>
+					    <input type="text" class="form-control" name="filteredLocationName" id="filteredLocationName" placeholder="Squashberek">
+					    <button type="submit" class="btn btn-primary">Search</button>
+				  	</div>
+				  	
+				</form>			
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+				      		<th scope="col">Name</th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr th:each="filteredName : ${filteredNameList}">
+			    			<td th:text="${filteredName.name}"></td>
+				    	</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
 		<div class="row">
 			<div class="col-12">
 				<table class="table table-striped table-bordered">

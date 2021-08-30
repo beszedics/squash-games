@@ -1,5 +1,6 @@
 package pti.sb_squash_games.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class UserController {
 	
 	@Autowired
 	private LocationService locationService;
+	
 	
 	@GetMapping(value = "/login")
 	public String login() {
@@ -94,6 +96,50 @@ public class UserController {
 		List<Location> locations = locationService.getAllLocations();
 		
 		model.addAttribute("locations", locations);
+		
+		return "index";
+	}
+	
+	@PostMapping(value = "/filteredName")
+	public String getFilteredName(Model model, @RequestParam String filterName) {
+		
+		List<Game> games = new ArrayList<Game>();
+		
+		List<Game> gamesList = gameService.getAllGames();
+		
+		for (Game game : gamesList) {
+			
+			String firstUserName = game.getResult().getFirstUser().getName();
+			String secondUserName = game.getResult().getSecondUser().getName();
+			
+			/** If one of username equals with parameter name, add the given row to the list  */
+			if (firstUserName.equals(filterName) || secondUserName.equals(filterName)) {
+				games.add(game);
+			}
+		}
+		
+		model.addAttribute("games", games);
+		
+		return "index";
+	}
+	
+	@PostMapping(value = "/filteredLocation")
+	public String getFilteredLocationName(Model model, @RequestParam String filteredLocationName) {
+		
+		List<Game> games = new ArrayList<Game>();
+		
+		List<Game> gamesList = gameService.getAllGames();
+		
+		for (Game game : gamesList) {
+			
+			String locationName = game.getLocation().getName();
+			
+			if (locationName.equals(filteredLocationName)) {
+				games.add(game);
+			}
+		}
+		
+		model.addAttribute("games", games);
 		
 		return "index";
 	}

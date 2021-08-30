@@ -115,4 +115,13 @@ public class UserService {
 		
 		return isUserChangedPassword;	
 	}
+	
+	public List<User> getFilteredNames(String filterName) {
+		
+		List<User> filteredNames = new ArrayList<User>();
+		
+		filteredNames = userRepository.findByName(filterName);
+		
+		return filteredNames;
+	}
 }
