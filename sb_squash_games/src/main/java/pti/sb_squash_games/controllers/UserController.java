@@ -1,6 +1,8 @@
 package pti.sb_squash_games.controllers;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,6 +87,8 @@ public class UserController {
 		
 		List<Game> games = gameService.getAllGames();
 		
+		Collections.sort(games, Comparator.comparing(Game::getDate).reversed());
+		
 		model.addAttribute("games", games);
 		
 		return "index";
@@ -118,6 +122,8 @@ public class UserController {
 			}
 		}
 		
+		Collections.sort(games, Comparator.comparing(Game::getDate).reversed());
+		
 		model.addAttribute("games", games);
 		
 		return "index";
@@ -138,6 +144,8 @@ public class UserController {
 				games.add(game);
 			}
 		}
+		
+		Collections.sort(games, Comparator.comparing(Game::getDate).reversed());
 		
 		model.addAttribute("games", games);
 		
